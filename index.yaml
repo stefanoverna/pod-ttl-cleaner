@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   pod-ttl-cleaner:
   - apiVersion: v2
+    appVersion: 1.0.8
+    created: "2025-05-29T06:13:23.581705599Z"
+    description: A CronJob to garbage-collect pods past their TTL annotation
+    digest: f045ff70ce53b91c3de4e5ed831f65918a416c8ddb631da8fc2e21aa3094384f
+    name: pod-ttl-cleaner
+    type: application
+    urls:
+    - https://stefanoverna.github.io/pod-ttl-cleaner/charts/pod-ttl-cleaner-1.0.8.tgz
+    version: 1.0.8
+  - apiVersion: v2
     appVersion: 1.0.7
-    created: "2025-05-29T06:08:39.48533673Z"
+    created: "2025-05-29T06:13:23.581275808Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: f426535f468ccb72f1da7a641bd9a80c61b758386217e3bb7f9439cd3f12e2ce
     name: pod-ttl-cleaner
@@ -13,7 +23,7 @@ entries:
     version: 1.0.7
   - apiVersion: v2
     appVersion: 1.0.5
-    created: "2025-05-29T06:08:39.484956539Z"
+    created: "2025-05-29T06:13:23.580886031Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: 2ab5620aa08303da2cd8acb31526558905510e851067c0bd0966e5cc3c97b79d
     name: pod-ttl-cleaner
@@ -23,7 +33,7 @@ entries:
     version: 1.0.5
   - apiVersion: v2
     appVersion: 1.0.4
-    created: "2025-05-29T06:08:39.484523822Z"
+    created: "2025-05-29T06:13:23.580482278Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: bcf8b02e76e4664bfa1895b8a8a3444c86bbc9fa1f382bec8ccd37eca0009a1d
     name: pod-ttl-cleaner
@@ -33,7 +43,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 1.0.3
-    created: "2025-05-29T06:08:39.484082524Z"
+    created: "2025-05-29T06:13:23.580069288Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: 4ce9e1265fcc6613762e69c3a670c45a21b86e9f192b93bff437624dd738cf1c
     name: pod-ttl-cleaner
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://stefanoverna.github.io/pod-ttl-cleaner/charts/pod-ttl-cleaner-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-29T06:08:39.483496279Z"
+generated: "2025-05-29T06:13:23.579510566Z"
