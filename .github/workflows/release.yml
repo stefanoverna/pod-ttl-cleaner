@@ -56,15 +56,12 @@ jobs:
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
 
-      - name: Update Helm chart values
-        run: |
-          sed -i "s|tag: .*|tag: \"${{ github.ref_name }}\"|" values.yaml
-
-      - name: Set appVersion in Chart.yaml
+      - name: Set appVersion in Chart.yaml and values.yaml
         run: |
           VERSION=${GITHUB_REF#refs/tags/v}
           sed -i "s/^appVersion: .*/appVersion: \"$VERSION\"/" Chart.yaml
           sed -i "s/^version: .*/version: \"$VERSION\"/" Chart.yaml
+          sed -i "s/tag: .*/tag: \"$VERSION\"/" values.yaml
 
       - name: Set up Helm
         uses: azure/setup-helm@v4
