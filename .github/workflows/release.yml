@@ -65,23 +65,29 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/v}
           sed -i "s/^appVersion: .*/appVersion: \"$VERSION\"/" Chart.yaml
 
-      - name: Configure Git
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-
-      - name: Commit updated Helm chart values
-        run: |
-          git add values.yaml
-          git commit -m "Update image tag to ${{ github.ref_name }}"
-          git push
-
       - name: Set up Helm
         uses: azure/setup-helm@v4
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.6.0
+      - name: Package Helm chart
+        run: |
+          helm package . --destination packaged
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
         with:
-          charts_dir: charts
-        env:
-          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Copy packaged chart to gh-pages
+        run: |
+          mkdir -p gh-pages/charts
+          cp packaged/*.tgz gh-pages/charts/
+
+      - name: Commit & push Helm chart
+        working-directory: gh-pages
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add charts/*.tgz
+          git commit -m "Deploy Helm chart for ${GITHUB_REF#refs/tags/}" || echo "No changes to commit"
+          git push origin gh-pages
