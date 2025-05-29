@@ -20,9 +20,4 @@ spec:
               env:
                 - name: ANNOTATION_KEY
                   value: {{.Values.annotationKey | quote}}
-                - name: DEFAULT_TTL
-                  value: "{{ .Values.defaultTTL }}"
-              volumeMounts:
-                - name: script
-                  mountPath: /scripts
           restartPolicy: OnFailure

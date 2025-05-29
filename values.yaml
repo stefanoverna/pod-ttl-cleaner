@@ -1,6 +1,6 @@
 schedule: "* * * * *"
 
-annotationKey: "pod-ttl-cleaner.stefanoverna.com/ttl"
+annotationKey: "stefanoverna.github.io/pod-ttl-cleaner/ttl"
 
 image:
   repository: ghcr.io/stefanoverna/pod-ttl-cleaner
