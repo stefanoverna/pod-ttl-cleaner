@@ -51,7 +51,7 @@ async function cleanupPods() {
     );
 
     if (age > ttl) {
-      console.log(`  → DELETING POD ${ns}/${name} (age ${age}s > ttl ${ttl}s)`);
+      console.log(`  → DELETING POD: age ${age}s > ttl ${ttl}s`);
       try {
         await core.deleteNamespacedPod({ name, namespace: ns });
         deletedCount++;
@@ -59,7 +59,7 @@ async function cleanupPods() {
         console.error(`  !! ERROR deleting pod ${ns}/${name}:`, err.body || err);
       }
     } else {
-      console.log(`  → KEEP POD ${ns}/${name} (within TTL)`);
+      console.log(`  → KEEP POD: within TTL`);
       skippedCount++;
     }
   }
@@ -107,7 +107,7 @@ async function cleanupJobs() {
     );
 
     if (age > ttl && isActive) {
-      console.log(`  → DELETING JOB ${ns}/${name} (age ${age}s > ttl ${ttl}s AND has ${status?.active} active pods)`);
+      console.log(`  → DELETING JOB: age ${age}s > ttl ${ttl}s AND has ${status?.active} active pods`);
       try {
         // Delete job with cascade policy to also delete associated pods
         await batch.deleteNamespacedJob({
@@ -121,7 +121,7 @@ async function cleanupJobs() {
       }
     } else {
       const reason = age <= ttl ? 'within TTL' : 'no active pods';
-      console.log(`  → KEEP JOB ${ns}/${name} (${reason})`);
+      console.log(`  → KEEP JOB: ${reason}`);
       skippedCount++;
     }
   }
