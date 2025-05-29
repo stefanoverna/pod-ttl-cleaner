@@ -1,10 +1,10 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ include "pod-ttl-cleaner.fullname" . }}
-  namespace: {{ .Release.Namespace }}
+  name: {{include "pod-ttl-cleaner.fullname" .}}
+  namespace: {{.Release.Namespace}}
 spec:
-  schedule: {{ .Values.schedule | quote }}
+  schedule: {{.Values.schedule | quote}}
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
@@ -12,21 +12,17 @@ spec:
     spec:
       template:
         spec:
-          serviceAccountName: {{ include "pod-ttl-cleaner.serviceAccountName" . }}
+          serviceAccountName: {{include "pod-ttl-cleaner.serviceAccountName" .}}
           containers:
-          - name: cleaner
-            image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-            command: ["npm", "run", "start"]
-            env:
-              - name: ANNOTATION_KEY
-                value: {{ .Values.annotationKey | quote }}
-              - name: DEFAULT_TTL
-                value: "{{ .Values.defaultTTL }}"
-            volumeMounts:
-              - name: script
-                mountPath: /scripts
+            - name: cleaner
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              command: ["npm", "run", "start"]
+              env:
+                - name: ANNOTATION_KEY
+                  value: {{.Values.annotationKey | quote}}
+                - name: DEFAULT_TTL
+                  value: "{{ .Values.defaultTTL }}"
+              volumeMounts:
+                - name: script
+                  mountPath: /scripts
           restartPolicy: OnFailure
-          volumes:
-            - name: script
-              configMap:
-                name: {{ include "pod-ttl-cleaner.fullname" . }}-script
