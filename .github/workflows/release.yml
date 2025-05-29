@@ -55,3 +55,33 @@ jobs:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
+      - name: Update Helm chart values
+        run: |
+          sed -i "s|tag: .*|tag: \"${{ github.ref_name }}\"|" values.yaml
+
+      - name: Set appVersion in Chart.yaml
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          sed -i "s/^appVersion: .*/appVersion: \"$VERSION\"/" Chart.yaml
+
+      - name: Configure Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Commit updated Helm chart values
+        run: |
+          git add values.yaml
+          git commit -m "Update image tag to ${{ github.ref_name }}"
+          git push
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.6.0
+        with:
+          charts_dir: charts
+        env:
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}

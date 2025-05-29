@@ -1,5 +1,7 @@
-# How often to run (Cron format). Example: every minutes
 schedule: "* * * * *"
 
-# TTL annotation key
 annotationKey: "pod-ttl-cleaner.stefanoverna.com/ttl"
+
+image:
+  repository: ghcr.io/stefanoverna/pod-ttl-cleaner
+  tag: "1.0.0"

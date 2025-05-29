@@ -15,11 +15,8 @@ spec:
           serviceAccountName: {{ include "pod-ttl-cleaner.serviceAccountName" . }}
           containers:
           - name: cleaner
-            image: node:22-alpine
-            command: ["/bin/sh", "-c"]
-            workingDir: /usr/app
-            args:
-              - cp /scripts/* . && pwd && ls -la . && npm install && ./node_modules/.bin/tsx cleanup.ts
+            image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+            command: ["npm", "run", "start"]
             env:
               - name: ANNOTATION_KEY
                 value: {{ .Values.annotationKey | quote }}
