@@ -96,18 +96,18 @@ async function cleanupJobs() {
       continue;
     }
 
-    // Check job state for logging purposes
+    // Check if job has active pods
     const isActive = status?.active && status.active > 0;
     const jobState = isActive ? 'Active' :
       status?.succeeded ? 'Succeeded' :
         status?.failed ? 'Failed' : 'Unknown';
 
     console.log(
-      `- CHECK JOB ${ns}/${name}: state=${jobState}, age=${age}s, ttl=${ttl}s`
+      `- CHECK JOB ${ns}/${name}: state=${jobState}, age=${age}s, ttl=${ttl}s, activePods=${status?.active || 0}`
     );
 
-    if (age > ttl) {
-      console.log(`  → DELETING JOB ${ns}/${name} (age ${age}s > ttl ${ttl}s)`);
+    if (age > ttl && isActive) {
+      console.log(`  → DELETING JOB ${ns}/${name} (age ${age}s > ttl ${ttl}s AND has ${status?.active} active pods)`);
       try {
         // Delete job with cascade policy to also delete associated pods
         await batch.deleteNamespacedJob({
@@ -120,7 +120,8 @@ async function cleanupJobs() {
         console.error(`  !! ERROR deleting job ${ns}/${name}:`, err.body || err);
       }
     } else {
-      console.log(`  → KEEP JOB ${ns}/${name} (within TTL)`);
+      const reason = age <= ttl ? 'within TTL' : 'no active pods';
+      console.log(`  → KEEP JOB ${ns}/${name} (${reason})`);
       skippedCount++;
     }
   }
