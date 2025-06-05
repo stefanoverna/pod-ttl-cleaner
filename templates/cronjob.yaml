@@ -16,7 +16,6 @@ spec:
           containers:
             - name: cleaner
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-              command: ["npm", "run", "start"]
               env:
                 - name: ANNOTATION_KEY
                   value: {{.Values.annotationKey | quote}}

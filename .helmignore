@@ -22,4 +22,12 @@
 *.tmproj
 .vscode/
 Dockerfile
-image/
+
+# Binaries and build artifacts
+pod-ttl-cleaner
+builder-test/
+cmd/
+go.mod
+go.sum
+.gocache
+.repomix/

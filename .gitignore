@@ -1,2 +1,3 @@
-image/node_modules
 result.yml
+.gocache
+pod-ttl-cleaner
