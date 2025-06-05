@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   pod-ttl-cleaner:
   - apiVersion: v2
+    appVersion: 1.0.15
+    created: "2025-06-05T08:34:38.973763566Z"
+    description: A CronJob to garbage-collect pods past their TTL annotation
+    digest: 46964c86cc7c6d1abc1c5e6410bf99f7605c9c7f86dbd27b14b96f4a41964f11
+    name: pod-ttl-cleaner
+    type: application
+    urls:
+    - https://stefanoverna.github.io/pod-ttl-cleaner/charts/pod-ttl-cleaner-1.0.15.tgz
+    version: 1.0.15
+  - apiVersion: v2
     appVersion: 1.0.14
-    created: "2025-05-29T07:26:19.51365114Z"
+    created: "2025-06-05T08:34:38.973494411Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: fbda45aa71c580e4137c9eb713793e6d14ab0dfc5a520a756068a9726f25d279
     name: pod-ttl-cleaner
@@ -13,7 +23,7 @@ entries:
     version: 1.0.14
   - apiVersion: v2
     appVersion: 1.0.13
-    created: "2025-05-29T07:26:19.51317645Z"
+    created: "2025-06-05T08:34:38.973320655Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: db0a637f7c0ca2bbf4efb5d9d2114a1c9f813485b0ef364ba3d51ed1beed8578
     name: pod-ttl-cleaner
@@ -23,7 +33,7 @@ entries:
     version: 1.0.13
   - apiVersion: v2
     appVersion: 1.0.12
-    created: "2025-05-29T07:26:19.51298441Z"
+    created: "2025-06-05T08:34:38.973099931Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: 781094e2fe8d2141aafa8ed5631047faa668f2929388e77b731eab9094d1c64c
     name: pod-ttl-cleaner
@@ -33,7 +43,7 @@ entries:
     version: 1.0.12
   - apiVersion: v2
     appVersion: 1.0.11
-    created: "2025-05-29T07:26:19.512760311Z"
+    created: "2025-06-05T08:34:38.972870099Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: c9c2802d0bff031b80f157a7133f7ad6c2b578060b02fc2dea76058945a9b727
     name: pod-ttl-cleaner
@@ -43,7 +53,7 @@ entries:
     version: 1.0.11
   - apiVersion: v2
     appVersion: 1.0.10
-    created: "2025-05-29T07:26:19.512362345Z"
+    created: "2025-06-05T08:34:38.972449159Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: 1a04011a2876da500a53a67349a2cc78f7d912b6eba55ef1bfca624cf4eb58c8
     name: pod-ttl-cleaner
@@ -53,7 +63,7 @@ entries:
     version: 1.0.10
   - apiVersion: v2
     appVersion: 1.0.9
-    created: "2025-05-29T07:26:19.516136749Z"
+    created: "2025-06-05T08:34:38.977274417Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: 02e784cb7c91ef58d3bccd51803bc6603d876186c90d1ca91f15d756c4ed335b
     name: pod-ttl-cleaner
@@ -63,7 +73,7 @@ entries:
     version: 1.0.9
   - apiVersion: v2
     appVersion: 1.0.8
-    created: "2025-05-29T07:26:19.51569959Z"
+    created: "2025-06-05T08:34:38.976866652Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: f045ff70ce53b91c3de4e5ed831f65918a416c8ddb631da8fc2e21aa3094384f
     name: pod-ttl-cleaner
@@ -73,7 +83,7 @@ entries:
     version: 1.0.8
   - apiVersion: v2
     appVersion: 1.0.7
-    created: "2025-05-29T07:26:19.51531556Z"
+    created: "2025-06-05T08:34:38.976379998Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: f426535f468ccb72f1da7a641bd9a80c61b758386217e3bb7f9439cd3f12e2ce
     name: pod-ttl-cleaner
@@ -83,7 +93,7 @@ entries:
     version: 1.0.7
   - apiVersion: v2
     appVersion: 1.0.5
-    created: "2025-05-29T07:26:19.514859526Z"
+    created: "2025-06-05T08:34:38.975903985Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: 2ab5620aa08303da2cd8acb31526558905510e851067c0bd0966e5cc3c97b79d
     name: pod-ttl-cleaner
@@ -93,7 +103,7 @@ entries:
     version: 1.0.5
   - apiVersion: v2
     appVersion: 1.0.4
-    created: "2025-05-29T07:26:19.514415885Z"
+    created: "2025-06-05T08:34:38.974229872Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: bcf8b02e76e4664bfa1895b8a8a3444c86bbc9fa1f382bec8ccd37eca0009a1d
     name: pod-ttl-cleaner
@@ -103,7 +113,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 1.0.3
-    created: "2025-05-29T07:26:19.511928633Z"
+    created: "2025-06-05T08:34:38.972008652Z"
     description: A CronJob to garbage-collect pods past their TTL annotation
     digest: 4ce9e1265fcc6613762e69c3a670c45a21b86e9f192b93bff437624dd738cf1c
     name: pod-ttl-cleaner
@@ -111,4 +121,4 @@ entries:
     urls:
     - https://stefanoverna.github.io/pod-ttl-cleaner/charts/pod-ttl-cleaner-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-29T07:26:19.51139883Z"
+generated: "2025-06-05T08:34:38.971467706Z"
